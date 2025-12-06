@@ -1,6 +1,8 @@
 package com.tcc.tcc_project_management_backend.controller;
 
-import com.tcc.tcc_project_management_backend.model.Task;
+import com.tcc.tcc_project_management_backend.dto.CreateTaskDTO;
+import com.tcc.tcc_project_management_backend.dto.TaskDTO;
+import com.tcc.tcc_project_management_backend.dto.UpdateTaskDTO;
 import com.tcc.tcc_project_management_backend.service.TaskService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,20 +20,20 @@ public class TaskController {
     }
 
     @PostMapping("/project/{projectId}")
-    public ResponseEntity<Task> createTask(@PathVariable Long projectId,
-                                           @RequestBody Task task) {
-        return ResponseEntity.ok(taskService.createTask(projectId, task));
+    public ResponseEntity<TaskDTO> createTask(@PathVariable Long projectId,
+                                              @RequestBody CreateTaskDTO dto) {
+        return ResponseEntity.ok(taskService.createTask(projectId, dto));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
+    public ResponseEntity<TaskDTO> getTaskById(@PathVariable Long id) {
         return ResponseEntity.ok(taskService.getTaskById(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Task> updateTask(@PathVariable Long id,
-                                           @RequestBody Task task) {
-        return ResponseEntity.ok(taskService.updateTask(id, task));
+    public ResponseEntity<TaskDTO> updateTask(@PathVariable Long id,
+                                              @RequestBody UpdateTaskDTO dto) {
+        return ResponseEntity.ok(taskService.updateTask(id, dto));
     }
 
     @DeleteMapping("/{id}")
@@ -41,7 +43,7 @@ public class TaskController {
     }
 
     @GetMapping("/project/{projectId}")
-    public ResponseEntity<List<Task>> getTasksByProject(@PathVariable Long projectId) {
+    public ResponseEntity<List<TaskDTO>> getTasksByProject(@PathVariable Long projectId) {
         return ResponseEntity.ok(taskService.getTasksByProject(projectId));
     }
 }
