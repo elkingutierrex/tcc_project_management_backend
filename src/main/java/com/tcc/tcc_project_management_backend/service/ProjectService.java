@@ -1,17 +1,20 @@
 package com.tcc.tcc_project_management_backend.service;
 
-import com.tcc.tcc_project_management_backend.model.Project;
+import com.tcc.tcc_project_management_backend.dto.CreateProjectDTO;
+import com.tcc.tcc_project_management_backend.dto.ProjectDTO;
+import com.tcc.tcc_project_management_backend.dto.UpdateProjectDTO;
+
 import java.util.List;
 
 public interface ProjectService {
 
-    Project createProject(Project project);
+    ProjectDTO createProject(CreateProjectDTO dto);
 
-    Project updateProject(Long id, Project project);
+    ProjectDTO updateProject(Long id, UpdateProjectDTO dto);
 
     void deleteProject(Long id);
 
-    Project getProjectById(Long id);
+    ProjectDTO getProjectById(Long id);
 
-    List<Project> getAllProjects();
+    List<ProjectDTO> getAllProjects();
 }
